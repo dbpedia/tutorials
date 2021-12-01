@@ -10,15 +10,16 @@ https://raw.githubusercontent.com/dbpedia/tutorials/master/cdw21/texts/berlin.tx
 https://raw.githubusercontent.com/dbpedia/tutorials/master/cdw21/texts/san_francisco.txt"
 
 # Clear file
-> spotlight_annotations.nt
+> texts/spotlight_annotations.nq
 
 for doc in $documents; do 
   echo "Annotating document: $doc"
   text=$(curl -s $doc);
   encoded=$(urlencode "$text")
-  curl -s -X GET "https://api.dbpedia-spotlight.org/en/annotate?text=$encoded&confidence=0.5" -H "accept: application/n-triples" > tmp.nt
-  sed -i -e "s#^#<$doc> #" tmp.nt
-  cat tmp.nt >> spotlight_annotations.nt
+  curl -s -X GET "https://api.dbpedia-spotlight.org/en/annotate?text=$encoded&confidence=0.5" -H "accept: application/n-triples" > tmp.nq
+  sed -i -e 's/..$//' tmp.nq
+  sed -i -e "s#\$# <$doc> .#" tmp.nq
+  cat tmp.nq >> texts/spotlight_annotations.nq
 done
 
-rm tmp.nt
+rm tmp.nq
