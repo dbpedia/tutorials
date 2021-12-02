@@ -1,6 +1,7 @@
 # CDW21 Tutorial Resources
 
 ## Running a local Databus
+[https://github.com/dbpedia/databus](https://github.com/dbpedia/databus)
 
 ```
 cd databus
@@ -19,6 +20,7 @@ This will send multiple requests to the DBpedia Spotlight API and create an N-Qu
 The result should look like this: [text/spotlight_annotations.nq](https://raw.githubusercontent.com/dbpedia/tutorials/master/cdw21/texts/spotlight_annotations.nq).
 
 ## Starting the triple store
+[https://github.com/dbpedia/virtuoso-sparql-endpoint-quickstart](https://github.com/dbpedia/virtuoso-sparql-endpoint-quickstart)
 
 ```
 cd store
