@@ -26,3 +26,21 @@ The result should look like this: [text/spotlight_annotations.nq](https://raw.gi
 cd store
 docker-compose up
 ```
+
+## Queries for Verification
+
+```
+SELECT DISTINCT ?document WHERE {
+  GRAPH ?document { ?s <http://www.w3.org/2005/11/its/rdf#taIdentRef> ?o }
+  ?o <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat .
+  FILTER(?lat < 0)
+}
+```
+
+```
+SELECT DISTINCT ?document WHERE {
+  GRAPH ?document { ?s <http://www.w3.org/2005/11/its/rdf#taIdentRef> ?o }
+  ?o <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long .
+  FILTER(?long > 0 && ?long < 20)
+}
+```
