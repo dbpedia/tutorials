@@ -3,10 +3,7 @@
 Run
 
 ```
-docker run -v ./spotlight/wdir:/model-quickstarter/wdir \
-	-v ./spotlight/data:/model-quickstarter/data \
-	-v ./spotlight/models:/model-quickstarter/models \
-	-it dbpediaspotlight/model-quickstarter bash
+docker run -v ./spotlight/wdir:/model-quickstarter/wdir -v ./spotlight/data:/model-quickstarter/data -v ./spotlight/models:/model-quickstarter/models -it dbpediaspotlight/model-quickstarter bash
 ```
 
 Then
