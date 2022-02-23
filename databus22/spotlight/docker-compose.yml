@@ -1,0 +1,43 @@
+version: '3.5'    
+services:
+  spotlight.en:
+    image: dbpedia/spotlight-for-databus
+    container_name: dbpedia-spotlight.en
+    environment:
+      NAME: test
+      MODEL_PATH: /opt/spotlight/models
+      QUERY: >
+        PREFIX dataid: <http://dataid.dbpedia.org/ns/core#>
+
+        PREFIX dct:    <http://purl.org/dc/terms/>
+
+        PREFIX dcat:   <http://www.w3.org/ns/dcat#>
+
+        PREFIX db:     <https://databus.dbpedia.org/>
+
+        PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT DISTINCT ?file WHERE {
+          GRAPH ?g {
+            ?dataset dcat:distribution ?distribution .
+            ?distribution dcat:downloadURL ?file .
+            ?dataset dataid:artifact <https://databus.dbpedia.org/dbpedia/spotlight/spotlight-model> .
+            {
+              ?distribution dct:hasVersion ?version {
+                SELECT (?v as ?version) { 
+                  ?dataset dataid:artifact <https://databus.dbpedia.org/dbpedia/spotlight/spotlight-model> . 
+                  ?dataset dct:hasVersion ?v . 
+                } ORDER BY DESC (?version) LIMIT 1 
+              }
+            }
+            { ?distribution <http://dataid.dbpedia.org/ns/cv#lang> 'lt'^^<http://www.w3.org/2001/XMLSchema#string> . }
+          }
+        }
+    volumes:
+      - ./models:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+      - "0.0.0.0:2222:80"  
+    command: /bin/spotlight.sh

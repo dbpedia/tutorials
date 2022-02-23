@@ -3,8 +3,8 @@ services:
   databus:
     image: "dbpedia/databus"
     ports:
-      - 3000:3000
-      - 3001:8080
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3001:8080
     environment:
       DATABUS_RESOURCE_BASE_URL: ${DATABUS_RESOURCE_BASE_URL}
       DATABUS_DATABASE_URL: "http://gstore:8080"
@@ -28,7 +28,7 @@ services:
     volumes:
       - ./data/repo:/root/git
   virtuoso:
-    image: "openlink/virtuoso-opensource-7:7.2.6-r8-g5a27710"
+    image: "openlink/virtuoso-opensource-7"
     environment:
       DBA_PASSWORD: ${VIRTUOSO_PASSWORD}
       SPARQL_UPDATE: "true"
