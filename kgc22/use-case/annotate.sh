@@ -3,7 +3,6 @@ source helpers.sh
 # CREATE ANNOTATIONS
 #####################
 
-
 # Get the version flag
 while getopts v: flag
 do
@@ -45,6 +44,16 @@ done
 # Remove the tmp file
 rm tmp.nq
 
+# Upload to file server (Github)
 git add results/spotlight_annotations_$version.nq
 git commit -m 'Added new annotation version'
 git push
+
+# Create DataId
+template=$(<dataid-template.jsonld)
+dataid=${template//%VERSION%/$version}
+
+
+# Publish to Databus
+curl -X POST -H "x-api-key: 05845209-a25f-49f2-8f3d-2bbda11f1dc2" \
+  -H "Content-Type: application/json" -d "$dataid" "https://dev.databus.dbpedia.org/api/publish"
