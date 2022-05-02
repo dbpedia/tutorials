@@ -1,0 +1,37 @@
+version: "1.0"
+indexConfig:
+  indexPath: /root/lucene-index
+  indexMode: BUILD_DISK
+  cleanIndex: true
+  cacheSize: 100000
+  commitInterval: 100000
+  indexFields:
+    - fieldName: label
+      resourceName: entity
+      query: >
+        SELECT DISTINCT ?entity ?label  WHERE {
+          ?entity <http://www.w3.org/2000/01/rdf-schema#label> ?label .
+        }
+    - fieldName: comment
+      resourceName: entity
+      query: >
+        SELECT DISTINCT ?entity ?comment WHERE {
+          ?entity <http://www.w3.org/2000/01/rdf-schema#comment> ?comment.
+        }
+queryConfig:
+  exactMatchBoost: 5
+  prefixMatchBoost: 2
+  fuzzyMatchBoost: 1
+  fuzzyEditDistance: 2
+  fuzzyPrefixLength: 2
+  maxResults: 100
+  format: JSON
+  queryFields:
+    - fieldName: label
+      weight: 2.0
+      highlight: true
+      queryByDefault: true
+    - fieldName: comment
+      weight: 0.2
+      highlight: true
+      queryByDefault: true
