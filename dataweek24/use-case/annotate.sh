@@ -1,7 +1,15 @@
 source helpers.sh
 
+## HOW TO RUN
+# ./annotate.sh -v 1.0
+
+
 # CREATE ANNOTATIONS
 #####################
+
+# git update-index --assume-unchanged annotate.sh
+# to reverse: git update-index --no-assume-unchanged annotate.sh
+
 
 # Get the version flag
 while getopts v: flag
@@ -10,6 +18,7 @@ do
         v) version=${OPTARG};;
     esac
 done
+
 
 echo "Creating annotations with version: $version";
 
@@ -55,5 +64,6 @@ dataid=${template//%VERSION%/$version}
 
 
 # Publish to Databus
+# Note: provide your API KEY, get it via https://databus.dbpedia.org/USERNAME#settings
 curl -X POST -H "x-api-key: TODO" \
   -H "Content-Type: application/json" -d "$dataid" "https://databus.dbpedia.org/api/publish"
