@@ -55,5 +55,5 @@ dataid=${template//%VERSION%/$version}
 
 
 # Publish to Databus
-curl -X POST -H "x-api-key: 05845209-a25f-49f2-8f3d-2bbda11f1dc2" \
+curl -X POST -H "x-api-key: f2555932-e4c5-4c0e-bc29-f94a979ec5de" \
   -H "Content-Type: application/json" -d "$dataid" "https://databus.dbpedia.org/api/publish"

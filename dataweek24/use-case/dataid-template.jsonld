@@ -1,5 +1,5 @@
 {
-  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+  "@context": "https://databus.dbpedia.org/res/context.jsonld",
   "@graph": [
     {
       "@id": "https://databus.dbpedia.org/m1ci/dataweek24",
@@ -9,8 +9,16 @@
       "description": "Data Week 2024 demo artifacts for demonstration purposes."
     },
     {
-      "@type": "Dataset",
-      "@id": "https://databus.dbpedia.org/m1ci/dataweek24/spotlight-annotations/%VERSION%#Dataset",
+      "@id": "https://databus.dbpedia.org/m1ci/dataweek24/spotlight-annotations",
+      "@type": "Artifact",
+      "title": "Spotlight Annotation Demo Data"
+    },
+    {
+      "@type": [
+        "Version",
+        "Dataset"
+      ],
+      "@id": "https://databus.dbpedia.org/m1ci/dataweek24/spotlight-annotations/%VERSION%",
       "hasVersion": "%VERSION%",
       "title": "Spotlight Annotation Demo Data",
       "abstract": "Spotlight annotation demo data for Data Week 2024",
@@ -18,12 +26,10 @@
       "license": "http://dalicc.net/licenselibrary/AcademicFreeLicense30",
       "distribution": [
         {
-          "@id": "https://dev.databus.dbpedia.org/m1ci/dataweek24/spotlight-annotations/%VERSION%#spotlight-annotations.nq",
           "@type": "Part",
-          "file": "https://dev.databus.dbpedia.org/m1ci/dataweek24/spotlight-annotations/%VERSION%/spotlight-annotations.nq",
           "formatExtension": "nq",
           "compression": "none",
-          "downloadURL": "https://raw.githubusercontent.com/dbpedia/tutorials/master/dataweek24/use-case/results/spotlight_annotations_%VERSION%.nq"
+          "downloadURL": "https://raw.githubusercontent.com/dbpedia/tutorials/master/dataweek24/use-case/results/spotlight_annotations_1.nq"
         }
       ]
     }
