@@ -7,7 +7,7 @@ source helpers.sh
 # CREATE ANNOTATIONS
 #####################
 
-# git update-index --assume-unchanged annotate.sh
+git update-index --assume-unchanged annotate.sh
 # to reverse: git update-index --no-assume-unchanged annotate.sh
 
 
