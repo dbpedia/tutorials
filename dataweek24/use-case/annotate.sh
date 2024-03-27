@@ -77,7 +77,7 @@ done
 rm tmp.nt
 
 # Upload to file server (Github)
-git add results/spotlight_annotations_$version.nq
+git add results/spotlight_annotations_$version.nt
 git commit -m 'Added new annotation version'
 git push
 
@@ -88,5 +88,5 @@ dataid=${template//%VERSION%/$version}
 
 # Publish to Databus
 # Note: provide your API KEY, get it via https://databus.dbpedia.org/USERNAME#settings
-curl -X POST -H "x-api-key: TODO" \
+curl -X POST -H "x-api-key: f2555932-e4c5-4c0e-bc29-f94a979ec5de" \
   -H "Content-Type: application/json" -d "$dataid" "https://databus.dbpedia.org/api/publish"
