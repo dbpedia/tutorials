@@ -88,5 +88,5 @@ dataid=${template//%VERSION%/$version}
 
 # Publish to Databus
 # Note: provide your API KEY, get it via https://databus.dbpedia.org/USERNAME#settings
-curl -X POST -H "x-api-key: f2555932-e4c5-4c0e-bc29-f94a979ec5de" \
+curl -X POST -H "x-api-key: TODO" \
   -H "Content-Type: application/json" -d "$dataid" "https://databus.dbpedia.org/api/publish"
