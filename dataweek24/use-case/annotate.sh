@@ -46,7 +46,7 @@ automobile-industry-texts/article19.txt \
 automobile-industry-texts/article20.txt"
 
 # Clear file
-> results/spotlight_annotations_$version.nq
+> results/spotlight_annotations_$version.nt
 
 # Iterate the documents
 for doc in $documents; do 
