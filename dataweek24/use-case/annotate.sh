@@ -56,19 +56,25 @@ for doc in $documents; do
   encoded=$(urlencode "$text")
 
   # Send request to the DBpedia Spotlight API and save to temporary file
-  curl -s -X GET "https://api.dbpedia-spotlight.org/en/annotate?text=$encoded&confidence=0.5" -H "accept: application/n-triples" > tmp.nq
+  curl -s -X GET "https://api.dbpedia-spotlight.org/en/annotate?text=$encoded&confidence=0.5" -H "accept: application/n-triples" > tmp.nt
   
   # Create Quads in temp file
   # <annotation> <annotates> <topic> <document> .
-  sed -i -e 's/..$//' tmp.nq
-  sed -i -e "s#\$# <$doc> .#" tmp.nq
-
-  # Write modified temp file to our result file
-  cat tmp.nq >> results/spotlight_annotations_$version.nq
+#  sed -i -e 's/..$//' tmp.nq
+#  sed -i -e "s#\$# <$doc> .#" tmp.nq
+  if [ -f "tmp.nt" ]; then
+    docname="http://dataweek.de/$(basename "$doc")"
+    echo "$docname"
+    sed -i '' "s|http://www.dbpedia-spotlight.com/|$docname|g" tmp.nt
+    # Write modified temp file to our result file
+    cat tmp.nt >> results/spotlight_annotations_$version.nt
+  else
+    echo "Error: tmp.nt file not found."
+  fi
 done
 
 # Remove the tmp file
-rm tmp.nq
+rm tmp.nt
 
 # Upload to file server (Github)
 git add results/spotlight_annotations_$version.nq
