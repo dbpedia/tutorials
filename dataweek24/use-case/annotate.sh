@@ -24,9 +24,26 @@ echo "Creating annotations with version: $version";
 
 # List of documents
 documents="\
-texts/melbourne.txt \
-texts/berlin.txt \
-texts/san_francisco.txt"
+automobile-industry-texts/article1.txt \
+automobile-industry-texts/article2.txt \
+automobile-industry-texts/article3.txt \
+automobile-industry-texts/article4.txt \
+automobile-industry-texts/article5.txt \
+automobile-industry-texts/article6.txt \
+automobile-industry-texts/article7.txt \
+automobile-industry-texts/article8.txt \
+automobile-industry-texts/article9.txt \
+automobile-industry-texts/article10.txt \
+automobile-industry-texts/article11.txt \
+automobile-industry-texts/article12.txt \
+automobile-industry-texts/article13.txt \
+automobile-industry-texts/article14.txt \
+automobile-industry-texts/article15.txt \
+automobile-industry-texts/article16.txt \
+automobile-industry-texts/article17.txt \
+automobile-industry-texts/article18.txt \
+automobile-industry-texts/article19.txt \
+automobile-industry-texts/article20.txt"
 
 # Clear file
 > results/spotlight_annotations_$version.nq
