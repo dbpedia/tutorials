@@ -27,9 +27,9 @@
       "distribution": [
         {
           "@type": "Part",
-          "formatExtension": "nq",
+          "formatExtension": "nt",
           "compression": "none",
-          "downloadURL": "https://raw.githubusercontent.com/dbpedia/tutorials/master/dataweek24/use-case/results/spotlight_annotations_1.nq"
+          "downloadURL": "https://raw.githubusercontent.com/dbpedia/tutorials/master/dataweek24/use-case/results/spotlight_annotations_%VERSION%.nt"
         }
       ]
     }
